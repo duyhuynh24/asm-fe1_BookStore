@@ -1,0 +1,22 @@
+<form>
+    <div class="mb-3">
+      <label class="form-label">Tên người dùng</label>
+      <input type="text" class="form-control" [(ngModel)]="selectedUser.name" name="name" required />
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="selectedUser.email" name="email" required />
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Vai trò</label>
+      <select class="form-control" [(ngModel)]="selectedUser.role" name="role" required>
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+      </select>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Lưu</button>
+  </form>
+  

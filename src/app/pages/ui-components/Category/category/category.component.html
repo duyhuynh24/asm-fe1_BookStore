@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Quản lý Danh Mục</h2>
+    <!-- Bảng Danh Mục -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên Danh Mục</th>
+          <th>Hành Động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td>
+            <button class="btn btn-warning" [routerLink]="['/ui-components/category/edit', category.id]">
+              Sửa
+            </button>
+            <button class="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  

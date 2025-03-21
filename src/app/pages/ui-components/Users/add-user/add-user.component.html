@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Thêm Người Dùng</h2>
+  
+    <form #userForm="ngForm" >
+      <div class="mb-3">
+        <label class="form-label">Tên Người Dùng</label>
+        <input type="text" class="form-control"  name="name" required />
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label" >Email</label>
+        <input type="email" class="form-control"  name="email" required />
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label">Mật khẩu</label>
+        <input type="password" class="form-control"  name="password" required />
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label">Vai Trò</label>
+        <select class="form-control" name="role" required>
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-success">Thêm</button>
+      <button type="button" class="btn btn-secondary ms-2" [routerLink]="['/ui-components/users']">Hủy</button>
+    </form>
+  </div>
+  
