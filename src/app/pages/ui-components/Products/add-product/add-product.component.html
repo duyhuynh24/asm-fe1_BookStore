@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">Thêm sách mới</h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <!-- Tên sách -->
+        <div class="mb-3">
+          <label for="bookName" class="form-label">Tên sách</label>
+          <input type="text" class="form-control" id="bookName" placeholder="Nhập tên sách" required />
+        </div>
+        
+        <!-- Giá -->
+        <div class="mb-3">
+          <label for="price" class="form-label">Giá (VNĐ)</label>
+          <input type="number" class="form-control" id="price" placeholder="Nhập giá" required />
+        </div>
+        
+        <!-- Trạng thái -->
+        <div class="mb-3">
+          <label for="status" class="form-label">Trạng thái</label>
+          <select class="form-select" id="status" required>
+            <option value="Available">Còn hàng</option>
+            <option value="Out of stock">Hết hàng</option>
+          </select>
+        </div>
+        
+        <!-- Danh mục -->
+        <div class="mb-3">
+          <label for="category" class="form-label">Danh mục</label>
+          <select class="form-select" id="category" required>
+            <option value="1">Tiểu thuyết</option>
+            <option value="2">Khoa học</option>
+            <option value="3">Lịch sử</option>
+          </select>
+        </div>
+        
+        <!-- Tồn kho -->
+        <div class="mb-3">
+          <label for="stock" class="form-label">Số lượng tồn kho</label>
+          <input type="number" class="form-control" id="stock" placeholder="Nhập số lượng" required />
+        </div>
+        
+        <!-- Mô tả -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Mô tả sách</label>
+          <textarea class="form-control" id="description" rows="3" placeholder="Nhập mô tả"></textarea>
+        </div>
+        
+        <!-- Hình ảnh -->
+        <div class="mb-3">
+          <label for="bookImage" class="form-label">Ảnh bìa sách</label>
+          <input type="file" class="form-control" id="bookImage" accept="image/*" />
+        </div>
+        
+        <!-- Nút thêm sách -->
+        <button type="submit" class="btn btn-primary">Thêm sách</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -17,8 +17,8 @@ export const navItems: NavItem[] = [
     iconName: 'User',
     route: '/ui-components/users',
     children: [
-      // { displayName: 'Add-User', iconName: 'add', route: '/ui-components/add-user' },
-      { displayName: 'List-User', iconName: 'list', route: '/ui-components/users' },
+      { displayName: 'Add', iconName: '', route: '/ui-components/add-user' },
+      { displayName: 'List', iconName: '', route: '/ui-components/list-user' },
     ]
   },
   {
@@ -26,8 +26,8 @@ export const navItems: NavItem[] = [
     iconName: 'category',
     route: '/ui-components/Category',
     children: [
-      { displayName: 'Lists-Category', iconName: 'list', route: '/ui-components/category' },
-      { displayName: 'Add-Category', iconName: 'add', route: '/ui-components/add-category' }
+      { displayName: 'Lists', iconName: '', route: '/ui-components/category' },
+      { displayName: 'Add', iconName: '', route: '/ui-components/add-category' }
     ]
   },
   {
@@ -41,9 +41,13 @@ export const navItems: NavItem[] = [
     route: '/ui-components/forms',
   },
   {
-    displayName: 'Tables',
-    iconName: 'table',
-    route: '/ui-components/tables',
+    displayName: 'Products',
+    iconName: 'Table',
+    route: '/ui-components/Products',
+    children: [
+      { displayName: 'List', iconName: '', route: '/ui-components/products' },
+      { displayName: 'Add', iconName: '', route: '/ui-components/products/add'}
+    ],
   },
   {
     navCap: 'Auth',

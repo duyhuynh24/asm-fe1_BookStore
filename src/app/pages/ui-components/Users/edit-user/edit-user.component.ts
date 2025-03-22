@@ -11,9 +11,9 @@ import { FormsModule } from '@angular/forms'; // ✅ Thêm FormsModule để h�
 })
 export class EditUserComponent {
   users = [
-    { id: 1, name: 'Nguyễn Văn A', email: 'nguyenvana@example.com', role: 'Admin' },
-    { id: 2, name: 'Trần Thị B', email: 'tranthib@example.com', role: 'User' },
-    { id: 3, name: 'Lê Văn C', email: 'levanc@example.com', role: 'User' },
+    { id: 1, name: 'Nguyễn Văn A', email: 'nguyenvana@example.com',password:'', role: 'Admin' },
+    { id: 2, name: 'Trần Thị B', email: 'tranthib@example.com',password:'', role: 'User' },
+    { id: 3, name: 'Lê Văn C', email: 'levanc@example.com',password:'', role: 'User' },
   ];
 
   selectedUser = this.users[0]; // ✅ Mặc định chọn user đầu tiên
