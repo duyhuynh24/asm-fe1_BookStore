@@ -1,29 +1,25 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-posts',
-  standalone: true,  // Nếu component này standalone
-  imports: [CommonModule, ReactiveFormsModule], // Thêm ReactiveFormsModule
+  standalone: true,
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent {
-  public postForm: FormGroup;
+  posts = [
+    { id: 1, title: 'Hướng dẫn Angular', category: 'Công nghệ' },
+    { id: 2, title: 'Tư duy sáng tạo', category: 'Đời sống' },
+    { id: 3, title: 'Chiến lược kinh doanh', category: 'Kinh doanh' }
+  ];
 
-  constructor(private fb: FormBuilder) {
-    this.postForm = this.fb.group({
-      title: [''],
-      content: [''],
-      image: [''],
-      category: ['']
-    });
-  }
-
-  onSubmit() {
-    console.log('Bài viết:', this.postForm.value);
-    alert('Bài viết đã được gửi!');
-    this.postForm.reset();
+  deletePost(postId: number) {
+    if (confirm('Bạn có chắc muốn xóa bài viết này?')) {
+      this.posts = this.posts.filter(post => post.id !== postId);
+    }
   }
 }
