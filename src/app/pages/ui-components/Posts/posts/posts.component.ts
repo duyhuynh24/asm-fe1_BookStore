@@ -24,7 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 export class PostsComponent {
   postForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(public fb: FormBuilder) {
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
       content: ['', [Validators.required, Validators.minLength(20)]],
