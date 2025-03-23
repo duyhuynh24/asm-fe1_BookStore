@@ -7,8 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+
 @Component({
   selector: 'app-posts',
+  standalone: true,  // Nếu dùng Angular Standalone
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -31,6 +33,19 @@ export class PostsComponent {
       image: [''],
       category: ['', Validators.required],
     });
+  }
+
+  // Getter để truy cập form controls trong HTML
+  get titleControl() {
+    return this.postForm.get('title');
+  }
+
+  get contentControl() {
+    return this.postForm.get('content');
+  }
+
+  get categoryControl() {
+    return this.postForm.get('category');
   }
 
   onSubmit() {
