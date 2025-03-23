@@ -37,17 +37,18 @@ export class PostsComponent {
   }
 
   // Getter để tránh lỗi "Private member is not accessible"
-  get titleControl() {
+  public get titleControl() {
     return this.postForm.get('title');
   }
 
-  get contentControl() {
+  public get contentControl() {
     return this.postForm.get('content');
   }
 
-  get categoryControl() {
+  public get categoryControl() {
     return this.postForm.get('category');
   }
+
 
   onSubmit() {
     if (this.postForm.valid) {

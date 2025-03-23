@@ -11,8 +11,8 @@
             <mat-form-field appearance="outline" class="w-100">
               <input matInput id="title" formControlName="title" type="text" placeholder="Nhập tiêu đề" />
             </mat-form-field>
-            <div *ngIf="titleControl?.invalid && titleControl?.touched">
-              <small *ngIf="titleControl?.errors?.['required']">Tiêu đề là bắt buộc.</small>
+            <div *ngIf="postForm.controls['title'].invalid && postForm.controls['title'].touched">
+              <small *ngIf="postForm.controls['title'].errors?.['required']">Tiêu đề là bắt buộc.</small>
               <small *ngIf="titleControl?.errors?.['minlength']">Tiêu đề tối thiểu 5 ký tự.</small>
             </div>
           </div>
