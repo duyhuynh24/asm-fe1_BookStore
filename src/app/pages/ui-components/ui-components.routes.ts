@@ -17,6 +17,10 @@ import { CategoryComponent } from './Category/category/category.component';
 import { AddCategoryComponent } from './Category/add-category/add-category.component';
 import { EditCategoryComponent } from './Category/edit-category/edit-category.component';
 
+// Order Management
+import { OrderListComponent } from './order-management/order-list/order-list.component';
+import { OrderDetailComponent } from './order-management/order-detail/order-detail.component';
+
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -66,6 +70,14 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'category/edit/:id',
         component: EditCategoryComponent,
+      },
+      {
+        path: 'order-management',
+        component: OrderListComponent
+      },
+      {
+        path: 'order-management/:id',
+        component: OrderDetailComponent
       },
     ],
   },

@@ -50,6 +50,22 @@ export const navItems: NavItem[] = [
     ],
   },
   {
+    displayName: 'Order-management',
+    iconName: 'shopping-cart',
+    children: [
+      {
+        displayName: 'Order-list',
+        iconName: 'list',
+        route: '/ui-components/order-management',
+      },
+      {
+        displayName: 'Order-detail',
+        iconName: 'file-text',
+        route: '/ui-components/order-management/:id',
+      }
+    ]
+  },
+  {
     navCap: 'Auth',
   },
   {

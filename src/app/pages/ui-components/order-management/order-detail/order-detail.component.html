@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h2>Chi tiết đơn hàng</h2>
+  <p><strong>Mã đơn:</strong> {{ order.id }}</p>
+  <p><strong>Khách hàng:</strong> {{ order.customer }}</p>
+  <p><strong>Tên sách:</strong> {{ order.bookTitle }}</p>
+  <p><strong>Số lượng:</strong> {{ order.quantity }}</p>
+  <p><strong>Tổng tiền:</strong> {{ order.total | currency:'VND' }}</p>
+  <p><strong>Trạng thái:</strong> <span class="badge bg-info">{{ order.status }}</span></p>
+
+  <button class="btn btn-success" *ngIf="order.status === 'Chờ xác nhận'" (click)="confirmOrder()"> Xác nhận</button>
+  <button class="btn btn-danger ms-2" *ngIf="order.status !== 'Đã hủy'" (click)="cancelOrder()"> Hủy</button>
+</div>
+
+

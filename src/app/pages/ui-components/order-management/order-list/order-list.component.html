@@ -1,0 +1,35 @@
+<table class="table table-bordered table-hover">
+  <thead class="table-dark">
+  <tr>
+    <th>Mã đơn</th>
+    <th>Khách hàng</th>
+    <th>Tên sách</th>
+    <th class="text-end">Số lượng</th>
+    <th class="text-end">Tổng tiền</th>
+    <th>Trạng thái</th>
+    <th class="text-center">Hành động</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders" class="align-middle">
+    <td>{{ order.id }}</td>
+    <td>{{ order.customer }}</td>
+    <td>{{ order.bookTitle }}</td>
+    <td class="text-end">{{ order.quantity }}</td>
+    <td class="text-end">{{ order.total | currency:'VND' }}</td>
+    <td>
+      <select class="form-select" [(ngModel)]="order.status" (change)="updateStatus(order)">
+        <option *ngFor="let s of statusList" [value]="s">{{ s }}</option>
+      </select>
+    </td>
+    <td class="text-center">
+      <a class="btn btn-info btn-sm" [routerLink]="['/ui-components/order-management/:id']">Xem chi tiết</a>
+
+      <button class="btn btn-danger btn-sm ms-2" *ngIf="order.status !== 'Đã hủy'" (click)="cancelOrder(order)">
+        Hủy
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
