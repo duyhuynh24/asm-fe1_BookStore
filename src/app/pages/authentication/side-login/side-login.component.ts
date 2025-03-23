@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
@@ -8,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-side-login',
-  imports: [RouterModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, MaterialModule, FormsModule, ReactiveFormsModule],
   templateUrl: './side-login.component.html',
 })
 export class AppSideLoginComponent {
@@ -16,7 +17,7 @@ export class AppSideLoginComponent {
   constructor( private router: Router) {}
 
   form = new FormGroup({
-    uname: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     password: new FormControl('', [Validators.required]),
   });
 
@@ -25,7 +26,12 @@ export class AppSideLoginComponent {
   }
 
   submit() {
-    // console.log(this.form.value);
+    if (this.form.invalid) {
+      this.form.markAllAsTouched(); // Đánh dấu tất cả input để hiển thị lỗi
+      return;
+    }
+    // console.log('Đăng nhập với:', this.form.value);
+    console.log('Đăng nhập với:', this.form.value);
     this.router.navigate(['/']);
   }
 }

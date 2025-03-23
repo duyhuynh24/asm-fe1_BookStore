@@ -16,7 +16,7 @@ import { EditProductComponent } from './Products/edit-product/edit-product.compo
 import { CategoryComponent } from './Category/category/category.component';
 import { AddCategoryComponent } from './Category/add-category/add-category.component';
 import { EditCategoryComponent } from './Category/edit-category/edit-category.component';
-
+import {PostsComponent} from "./Posts/posts/posts.component";
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -66,6 +66,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'category/edit/:id',
         component: EditCategoryComponent,
+      },
+      {
+        path: 'posts',
+        component: PostsComponent,
       },
     ],
   },
