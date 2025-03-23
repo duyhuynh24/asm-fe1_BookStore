@@ -25,7 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 })
 
 export class PostsComponent {
-  public postForm: FormGroup;  // 🟢 Sửa thành `public`
+  public postForm: FormGroup;  // 🟢 Đảm bảo là `public`
 
   constructor(public fb: FormBuilder) {
     this.postForm = this.fb.group({
@@ -36,7 +36,7 @@ export class PostsComponent {
     });
   }
 
-  // Getter để truy cập form controls trong HTML
+  // Getter để tránh lỗi "Private member is not accessible"
   get titleControl() {
     return this.postForm.get('title');
   }
@@ -57,3 +57,7 @@ export class PostsComponent {
     }
   }
 }
+
+
+
+
