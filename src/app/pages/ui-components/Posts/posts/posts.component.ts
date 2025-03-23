@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-posts',
-  standalone: true,  // Nếu dùng Angular Standalone
+  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -23,11 +23,10 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss'
 })
-
 export class PostsComponent {
-  public postForm: FormGroup;  // 🟢 Đảm bảo là `public`
+  public postForm: FormGroup; // 🟢 Đảm bảo là `public`
 
-  constructor(public fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
       content: ['', [Validators.required, Validators.minLength(20)]],
@@ -36,19 +35,18 @@ export class PostsComponent {
     });
   }
 
-  // Getter để tránh lỗi "Private member is not accessible"
+  // 🟢 Getter phải là `public`
   public get titleControl() {
-    return this.postForm.get('title');
+    return this.postForm.controls['title'];
   }
 
   public get contentControl() {
-    return this.postForm.get('content');
+    return this.postForm.controls['content'];
   }
 
   public get categoryControl() {
-    return this.postForm.get('category');
+    return this.postForm.controls['category'];
   }
-
 
   onSubmit() {
     if (this.postForm.valid) {
@@ -58,7 +56,3 @@ export class PostsComponent {
     }
   }
 }
-
-
-
-
