@@ -1,56 +1,58 @@
-<mat-card class="cardWithShadow theme-card">
-  <mat-card-header>
-    <mat-card-title class="m-b-0">Quản lý bài viết</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="b-t-1">
-    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-lg-12">
-          <mat-label class="f-w-600 m-b-8 d-block">Tiêu đề</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <input matInput id="title" formControlName="title" type="text" placeholder="Nhập tiêu đề" />
-          </mat-form-field>
-          <div *ngIf="postForm.controls['title'].invalid && postForm.controls['title'].touched">
-            <small *ngIf="postForm.controls['title'].errors?.['required']">Tiêu đề là bắt buộc.</small>
-            <small *ngIf="postForm.controls['title'].errors?.['minlength']">Tiêu đề tối thiểu 5 ký tự.</small>
+<div class="container mt-4">
+  <mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Quản lý bài viết</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-lg-12">
+            <mat-label class="f-w-600 m-b-8 d-block">Tiêu đề</mat-label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput id="title" formControlName="title" type="text" placeholder="Nhập tiêu đề" />
+            </mat-form-field>
+            <div *ngIf="titleControl?.invalid && titleControl?.touched">
+              <small *ngIf="titleControl?.errors?.['required']">Tiêu đề là bắt buộc.</small>
+              <small *ngIf="titleControl?.errors?.['minlength']">Tiêu đề tối thiểu 5 ký tự.</small>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <mat-label class="f-w-600 m-b-8 d-block">Nội dung</mat-label>
+            <mat-form-field appearance="outline" class="w-100">
+              <textarea matInput id="content" formControlName="content" placeholder="Nhập nội dung"></textarea>
+            </mat-form-field>
+            <div *ngIf="contentControl?.invalid && contentControl?.touched">
+              <small *ngIf="contentControl?.errors?.['required']">Nội dung là bắt buộc.</small>
+              <small *ngIf="contentControl?.errors?.['minlength']">Nội dung tối thiểu 20 ký tự.</small>
+            </div>
+          </div>
+
+          <div class="col-lg-12 ">
+            <mat-label class="f-w-600 m-b-8 d-block">Ảnh đại diện</mat-label>
+            <input id="image" formControlName="image" type="file" />
+          </div>
+
+          <div class="col-lg-12 mt-lg-3">
+            <mat-label class="f-w-600 m-b-8 d-block">Danh mục</mat-label>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-select id="category" formControlName="category">
+                <mat-option value="" disabled>Chọn danh mục</mat-option>
+                <mat-option value="tech">Công nghệ</mat-option>
+                <mat-option value="lifestyle">Đời sống</mat-option>
+                <mat-option value="business">Kinh doanh</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="categoryControl?.invalid && categoryControl?.touched">
+              <small>Vui lòng chọn danh mục.</small>
+            </div>
           </div>
         </div>
 
-        <div class="col-lg-12">
-          <mat-label class="f-w-600 m-b-8 d-block">Nội dung</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <textarea matInput id="content" formControlName="content" placeholder="Nhập nội dung"></textarea>
-          </mat-form-field>
-          <div *ngIf="postForm.controls['content'].invalid && postForm.controls['content'].touched">
-            <small *ngIf="postForm.controls['content'].errors?.['required']">Nội dung là bắt buộc.</small>
-            <small *ngIf="postForm.controls['content'].errors?.['minlength']">Nội dung tối thiểu 20 ký tự.</small>
-          </div>
+        <div class="m-t-12 text-center">
+          <button mat-flat-button color="primary" type="submit" [disabled]="postForm.invalid">Gửi bài viết</button>
         </div>
-
-        <div class="col-lg-12 ">
-          <mat-label class="f-w-600 m-b-8 d-block">Ảnh đại diện</mat-label>
-          <input id="image" formControlName="image" type="file" />
-        </div>
-
-        <div class="col-lg-12 mt-lg-3">
-          <mat-label class="f-w-600 m-b-8 d-block">Danh mục</mat-label>
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-select id="category" formControlName="category">
-              <mat-option value="" disabled>Chọn danh mục</mat-option>
-              <mat-option value="tech">Công nghệ</mat-option>
-              <mat-option value="lifestyle">Đời sống</mat-option>
-              <mat-option value="business">Kinh doanh</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <div *ngIf="postForm.controls['category'].invalid && postForm.controls['category'].touched">
-            <small>Vui lòng chọn danh mục.</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="m-t-12 text-center">
-        <button mat-flat-button color="primary" type="submit" [disabled]="postForm.invalid">Gửi bài viết</button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

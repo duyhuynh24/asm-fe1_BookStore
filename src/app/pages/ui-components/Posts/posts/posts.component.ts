@@ -23,8 +23,9 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss'
 })
+
 export class PostsComponent {
-  postForm: FormGroup;
+  public postForm: FormGroup;  // 🟢 Sửa thành `public`
 
   constructor(public fb: FormBuilder) {
     this.postForm = this.fb.group({
