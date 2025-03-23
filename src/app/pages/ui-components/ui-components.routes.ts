@@ -16,8 +16,10 @@ import { EditProductComponent } from './Products/edit-product/edit-product.compo
 import { CategoryComponent } from './Category/category/category.component';
 import { AddCategoryComponent } from './Category/add-category/add-category.component';
 import { EditCategoryComponent } from './Category/edit-category/edit-category.component';
-import {PostsComponent} from "./Posts/posts/posts.component";
 
+// posts
+import {PostsComponent} from './Posts/posts/posts.component';
+import { AddPostsComponent } from './Posts/add-posts/add-posts.component';
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -70,6 +72,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'posts',
         component: PostsComponent,
+      },
+      {
+        path: 'add-posts',
+        component: AddPostsComponent,
       },
     ],
   },
