@@ -35,16 +35,15 @@ export class PostsComponent {
     });
   }
 
-  // 🟢 Getter phải là `public`
-  public get titleControl() {
+  get titleControl() {
     return this.postForm.controls['title'];
   }
 
-  public get contentControl() {
+  get contentControl() {
     return this.postForm.controls['content'];
   }
 
-  public get categoryControl() {
+  get categoryControl() {
     return this.postForm.controls['category'];
   }
 
