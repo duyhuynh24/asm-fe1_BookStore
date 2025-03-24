@@ -22,6 +22,9 @@ import { OrderListComponent } from './order-management/order-list/order-list.com
 import { OrderDetailComponent } from './order-management/order-detail/order-detail.component';
 
 
+// posts
+import {PostsComponent} from './Posts/posts/posts.component';
+import { AddPostsComponent } from './Posts/add-posts/add-posts.component';
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -78,6 +81,14 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'order-management/:id',
         component: OrderDetailComponent
+      },
+      {
+        path: 'posts',
+        component: PostsComponent,
+      },
+      {
+        path: 'add-posts',
+        component: AddPostsComponent,
       },
     ],
   },

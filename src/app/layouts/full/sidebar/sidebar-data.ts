@@ -31,6 +31,15 @@ export const navItems: NavItem[] = [
     ]
   },
   {
+    displayName: 'Posts',
+    iconName: 'article',
+    route: '/ui-components/Posts',
+    children: [
+      { displayName: 'Lists', iconName: '', route: '/ui-components/posts' },
+      { displayName: 'Add', iconName: '', route: '/ui-components/add-posts' }
+    ]
+  },
+  {
     displayName: 'Lists',
     iconName: 'list-details',
     route: '/ui-components/lists',
