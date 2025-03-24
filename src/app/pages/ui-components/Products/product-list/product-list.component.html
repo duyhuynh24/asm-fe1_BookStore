@@ -1,96 +1,103 @@
 <mat-card class="cardWithShadow">
   <mat-card-content>
-    <mat-card-title>Danh sách sách</mat-card-title>
+    <mat-card-title>Bảng thông tin</mat-card-title>
 
-    <div class="table-responsive">
-      <table mat-table [dataSource]="dataSource" class="w-100">
-        <!-- Cột Sách -->
-        <ng-container matColumnDef="product">
-          <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14 p-l-0"> Sách </th>
-          <td mat-cell *matCellDef="let element" class="p-l-0">
-            <div class="d-flex align-items-center">
-              <img [src]="element.imagePath" alt="Bìa sách" width="60" class="rounded" />
-              <div class="m-l-16">
-                <h6 class="f-s-14 f-w-600"> {{ element.title }} </h6>
+    <div class="filter-container">
+      <label class="filter-label">Nhập Tên truyện:</label>
+      <input type="text" class="filter-input" [(ngModel)]='filterValue' (keyup.enter)='filter()'>
+    </div>
+    
+    <div class="filter-by">Tên đã nhập: <strong>{{filterValue}}</strong></div>
+    
+    <div class="card-body">
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource1" class="w-100">
+          <!-- Cột sản phẩm -->
+          <ng-container matColumnDef="assigned">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14 p-l-0">Sản phẩm</th>
+            <td mat-cell *matCellDef="let element" class="p-l-0">
+              <div class="d-flex align-items-center">
+                <img [src]="element.imagePath" alt="sản phẩm" width="60" class="rounded" />
+                <div class="m-l-16">
+                  <h6 class="f-s-14 f-w-600">{{ element.uname }}</h6>
+                </div>
               </div>
-            </div>
-          </td>
-        </ng-container>
+            </td>
+          </ng-container>
 
-        <!-- Cột Mô tả -->
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14"> Mô tả </th>
-          <td mat-cell *matCellDef="let element">
-            <p class="f-s-12 text-muted">{{ element.description }}</p>
-          </td>
-        </ng-container>
+          <!-- Cột mô tả sản phẩm -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14">Mô tả</th>
+            <td mat-cell *matCellDef="let element">
+              <p class="text-muted">{{ element.description }}</p>
+            </td>
+          </ng-container>
 
-        <!-- Cột Giá -->
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14"> Giá (VNĐ) </th>
-          <td mat-cell *matCellDef="let element">
-            <h6 class="f-s-16"><span class="text-dark f-w-600">{{ element.price | currency:'VND' }}</span></h6>
-          </td>
-        </ng-container>
+          <!-- Cột giá -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14">Giá</th>
+            <td mat-cell *matCellDef="let element">
+              <h6 class="f-s-16 m-b-4"><span class="text-dark f-w-600">{{ element.budget }} đ</span></h6>
+            </td>
+          </ng-container>
 
-        <!-- Cột Tồn kho -->
-        <ng-container matColumnDef="stock">
-          <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14"> Tồn kho </th>
-          <td mat-cell *matCellDef="let element">
-            <span class="f-w-600 f-s-14" [ngClass]="{
-                'text-success': element.stock > 0,
-                'text-danger': element.stock === 0
-              }">
-              {{ element.stock > 0 ? element.stock + ' còn hàng' : 'Hết hàng' }}
-            </span>
-          </td>
-        </ng-container>
+          <!-- Cột số lượng -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14">Số lượng</th>
+            <td mat-cell *matCellDef="let element">
+              <span class="text-dark f-w-600">{{ element.quantity }}</span>
+            </td>
+          </ng-container>
 
-        <!-- Cột Danh mục -->
-        <ng-container matColumnDef="category">
-          <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14"> Danh mục </th>
-          <td mat-cell *matCellDef="let element">
-            <span class="badge bg-primary text-white f-w-600">{{ element.category }}</span>
-          </td>
-        </ng-container>
+          <!-- Cột trạng thái -->
+          <ng-container matColumnDef="priority">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14">Trạng thái</th>
+            <td mat-cell *matCellDef="let element">
+              <span [ngClass]="{
+                'bg-light-warning text-warning': element.priority == 'cancelled',
+                'bg-light-error text-error': element.priority == 'rejected',
+                'bg-light-success text-success': element.priority == 'confirmed'
+              }" class="rounded f-w-600 p-6 p-y-4 f-s-12">
+                {{ element.priority | titlecase }}
+              </span>
+            </td>
+          </ng-container>
 
-        <!-- Cột Trạng thái -->
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14"> Trạng thái </th>
-          <td mat-cell *matCellDef="let element">
-            <span [ngClass]="{
-                'bg-light-success text-success': element.status === 'Còn hàng',
-                'bg-light-warning text-warning': element.status === 'Hết hàng'
-              }"
-                  class="rounded f-w-600 p-6 p-y-4 f-s-12">
-              {{ element.status }}
-            </span>
-          </td>
-        </ng-container>
+          <!-- Cột thể loại -->
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14">Thể Loại</th>
+            <td mat-cell *matCellDef="let element">
+              <span class="text-dark f-w-600">{{ element.category }}</span>
+            </td>
+          </ng-container>
 
-        <!-- Cột Hành động -->
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14"> Hành động </th>
-          <td mat-cell *matCellDef="let element">
-            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Hành động">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item [routerLink]="['../products/edit', element.id]">
-                <mat-icon>edit</mat-icon>
-                <span>Chỉnh sửa</span>
+          <!-- Cột hành động -->
+          <ng-container matColumnDef="budget">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 f-s-14"></th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Nút tùy chọn">
+                <mat-icon>more_vert</mat-icon>
               </button>
-              <button mat-menu-item (click)="deleteProduct(element.id)">
-                <mat-icon>delete</mat-icon>
-                <span>Xóa</span>
-              </button>
-            </mat-menu>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+              <mat-menu #menu="matMenu">
+                <a mat-menu-item [routerLink]="['/ui-components/products/edit-product']">
+                  <mat-icon>edit</mat-icon>
+                  <span>Chỉnh sửa</span>
+                </a>
+                <button mat-menu-item>
+                  <mat-icon>delete</mat-icon>
+                  <span>Xóa</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+        </table>
+          
+        <!-- Phân trang -->
+        <mat-paginator [pageSize]="4" [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>

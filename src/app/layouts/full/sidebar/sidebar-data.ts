@@ -41,14 +41,16 @@ export const navItems: NavItem[] = [
     route: '/ui-components/forms',
   },
   {
-    displayName: 'Products',
+    displayName: 'Quản Lý Sản Phẩm',
     iconName: 'Table',
-    route: '/ui-components/Products',
+    route: '/ui-components/products',
     children: [
-      { displayName: 'List', iconName: '', route: '/ui-components/products' },
-      { displayName: 'Add', iconName: '', route: '/ui-components/products/add'}
+      { displayName: 'Danh sách sản phẩm', iconName: 'point', route: '/ui-components/products/product-list' },
+      { displayName: 'Thêm sản phẩm', iconName: 'point', route: '/ui-components/products/add-product' }
     ],
   },
+  
+  
   {
     navCap: 'Auth',
   },
