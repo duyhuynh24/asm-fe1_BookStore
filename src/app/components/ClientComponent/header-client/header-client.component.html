@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #ffe0b2;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" href="#"><strong>BOOKSTORE</strong></a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-dark" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" routerLink="/posts">Bài Viết</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" routerLink="/contacts">Liên hệ</a>
+        </li>
+      </ul>
+
+      <form class="d-flex mx-auto" role="search" style="max-width: 400px; width: 100%;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="background-color: #fff8e1; color: #212529; border-color: #dcedc8;">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto d-flex flex-row align-items-center gap-2">
+        <li class="nav-item">
+          <a class="btn btn-outline-primary position-relative text-dark" routerLink="/cart">
+            🛒 Giỏ hàng
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              0
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-secondary text-dark" routerLink="/login">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary" routerLink="/register">Đăng ký</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

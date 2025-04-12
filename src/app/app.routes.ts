@@ -1,19 +1,24 @@
 import { Routes } from '@angular/router';
-import { BlankComponent } from './layouts/blank/blank.component';
+import { ClientRoutes } from './pages/Client/ClientRoutes';
 import { FullComponent } from './layouts/full/full.component';
+import { BlankComponent } from './layouts/full/blank/blank.component';
 
 export const routes: Routes = [
+  // Route cho client (mặc định hiển thị client)
+  {
+    path: '',
+    children: [
+      ...ClientRoutes
+    ]
+  },
+
+  // Route cho admin
   {
     path: '',
     component: FullComponent,
     children: [
       {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full',
-      },
-      {
-        path: 'dashboard',
+        path: 'admin',
         loadChildren: () =>
           import('./pages/pages.routes').then((m) => m.PagesRoutes),
       },
@@ -31,6 +36,8 @@ export const routes: Routes = [
       },
     ],
   },
+
+  // Route cho các trang authentication
   {
     path: '',
     component: BlankComponent,
@@ -44,6 +51,8 @@ export const routes: Routes = [
       },
     ],
   },
+
+  // Xử lý trang lỗi hoặc redirect
   {
     path: '**',
     redirectTo: 'authentication/error',

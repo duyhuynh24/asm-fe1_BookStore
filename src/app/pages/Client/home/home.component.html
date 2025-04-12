@@ -1,0 +1,59 @@
+<!-- Banner Section -->
+<section class="banner bg-dark text-white py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <h1 class="display-4">Chào mừng đến với Thư Viện Sách Online</h1>
+        <p class="lead">Khám phá hàng nghìn đầu sách từ các tác giả nổi tiếng</p>
+        <!-- Gán cứng: không có chức năng nên href="#" -->
+        <a href="#" class="btn btn-primary btn-lg">Xem ngay</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Danh mục sách</h2>
+    <div class="row text-center">
+      <!-- Danh mục 1 -->
+      <div class="col-md-4 mb-3">
+        <img src="assets/images/category-fiction.jpg" alt="Tiểu thuyết" class="rounded-circle mb-2" style="width: 100px; height: 100px;">
+        <h5>Tiểu thuyết</h5>
+      </div>
+      <!-- Danh mục 2 -->
+      <div class="col-md-4 mb-3">
+        <img src="assets/images/category-technology.jpg" alt="Công nghệ" class="rounded-circle mb-2" style="width: 100px; height: 100px;">
+        <h5>Công nghệ</h5>
+      </div>
+      <!-- Danh mục 3 -->
+      <div class="col-md-4 mb-3">
+        <img src="assets/images/category-education.jpg" alt="Giáo dục" class="rounded-circle mb-2" style="width: 100px; height: 100px;">
+        <h5>Giáo dục</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Books Section -->
+<section class="featured-books py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Sách nổi bật</h2>
+    <div class="row">
+      <!-- Lặp qua dữ liệu sách (gán cứng) -->
+      <div class="col-md-4 mb-4" *ngFor="let book of books">
+        <div class="card h-100">
+          <img [src]="book.imageUrl" class="card-img-top" [alt]="book.title">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">Tác giả: {{ book.author }}</p>
+            <p class="card-text">{{ book.price }}</p>
+            <!-- Link tĩnh: gán cứng href="#" -->
+            <a href="#" class="btn btn-outline-primary">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

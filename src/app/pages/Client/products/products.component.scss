@@ -1,0 +1,62 @@
+.products-page {
+  .section-title {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .product-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+
+  .filter-box {
+    background-color: #f8f9fa;
+  }
+
+  .filter-title {
+    font-weight: 600;
+  }
+
+  .category-list, .price-list {
+    .list-group-item {
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .list-group-item:hover {
+      background-color: #e9ecef;
+    }
+  }
+
+  .book-card {
+    transition: transform 0.2s ease;
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-image {
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .book-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .book-description {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .book-price {
+      font-size: 1rem;
+    }
+  }
+}
