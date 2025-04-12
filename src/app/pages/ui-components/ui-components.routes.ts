@@ -1,4 +1,4 @@
-import { Routes, } from '@angular/router';
+import { Routes } from '@angular/router';
 
 // user
 import { ListUserComponent } from './Users/list-user/list-user.component';
@@ -20,16 +20,17 @@ import { EditCategoryComponent } from './Category/edit-category/edit-category.co
 // posts
 import {PostsComponent} from './Posts/posts/posts.component';
 import { AddPostsComponent } from './Posts/add-posts/add-posts.component';
+import {EditPostsComponent} from "./Posts/edit-posts/edit-posts.component";
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'list-user',
+        path: 'users',
         component: ListUserComponent,
       },
       {
-        path: 'add-user',
+        path: 'users/add',
         component: AddUserComponent,
       },
       {
@@ -77,7 +78,10 @@ export const UiComponentsRoutes: Routes = [
         path: 'add-posts',
         component: AddPostsComponent,
       },
+      {
+        path: 'posts/edit/:id',
+        component: EditPostsComponent,
+      },
     ],
   },
 ];
-

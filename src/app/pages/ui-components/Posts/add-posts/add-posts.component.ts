@@ -1,22 +1,56 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // Thêm RouterModule
+import { FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+
+
 @Component({
   selector: 'app-add-posts',
-  imports: [CommonModule, RouterModule], // Thêm cả 2 module vào đây
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add-posts.component.html',
-  styleUrl: './add-posts.component.scss'
+  styleUrls: ['./add-posts.component.scss']
 })
 export class AddPostsComponent {
-  posts = [
-    { id: 1, title: 'Hướng dẫn Angular', category: 'Công nghệ' },
-    { id: 2, title: 'Tư duy sáng tạo', category: 'Đời sống' },
-    { id: 3, title: 'Chiến lược kinh doanh', category: 'Kinh doanh' }
-  ];
+  formData = new FormGroup({
+    title: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
 
-  deletePost(postId: number) {
-    if (confirm('Bạn có chắc muốn xóa bài viết này?')) {
-      this.posts = this.posts.filter(post => post.id !== postId);
-    }
+    content: new FormControl('', [
+      Validators.required
+    ]),
+
+    image: new FormControl('', [
+      Validators.required
+    ]),
+
+    category: new FormControl('', [
+      Validators.required
+    ]),
+
+
+  })
+
+  onSubmit() {
+    console.log('Bài viết:', this.formData.value);
+    alert('Bài viết đã được gửi!');
+    this.formData.reset();
+  }
+
+  get title() {
+    return this.formData.get('title');
+  }
+
+  get content() {
+    return this.formData.get('content');
+  }
+
+  get image() {
+    return this.formData.get('image');
+  }
+
+  get category() {
+    return this.formData.get('category');
   }
 }
