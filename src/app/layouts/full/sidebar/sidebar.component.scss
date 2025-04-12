@@ -1,0 +1,32 @@
+.d-flex.align-items-center.justify-content-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: coral; /* Màu nền trắng */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+}
+
+.branding {
+  /* Các kiểu dáng cho phần branding (logo) */
+}
+
+.icon-40 {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Bo tròn nút X */
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.icon-40:hover {
+  background-color: #e0e0e0;
+}
+
+.icon-20 {
+  width: 20px;
+  height: 20px;
+}

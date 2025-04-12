@@ -6,16 +6,20 @@ import { AddUserComponent } from './Users/add-user/add-user.component';
 import { EditUserComponent } from './Users/edit-user/edit-user.component';
 // ui
 import { AppListsComponent } from './lists/lists.component';
-import { AppFormsComponent } from './forms/forms.component';
-
 // products
 import { ProductListComponent } from './Products/product-list/product-list.component';
-import { AddProductComponent } from "./Products/add-product/add-product.component";
+import { AddProductComponent } from './Products/add-product/add-product.component';
 import { EditProductComponent } from './Products/edit-product/edit-product.component';
-// category
+
+import { AppFormsComponent } from './forms/forms.component';
 import { CategoryComponent } from './Category/category/category.component';
 import { AddCategoryComponent } from './Category/add-category/add-category.component';
 import { EditCategoryComponent } from './Category/edit-category/edit-category.component';
+
+// Order Management
+import { OrderListComponent } from './order-management/order-list/order-list.component';
+import { OrderDetailComponent } from './order-management/order-detail/order-detail.component';
+
 
 // posts
 import {PostsComponent} from './Posts/posts/posts.component';
@@ -39,25 +43,10 @@ export const UiComponentsRoutes: Routes = [
       },
 
       {
-        path: 'lists',
-        component: AppListsComponent,
-      },
-      {
         path: 'forms',
         component: AppFormsComponent,
       },
-      {
-        path: 'products',
-        component: ProductListComponent,
-      },
-      {
-        path: 'products/add',
-        component: AddProductComponent,
-      },
-      {
-        path: 'products/edit/:id',
-        component: EditProductComponent,
-      },
+
       {
         path: 'category',
         component: CategoryComponent,
@@ -67,8 +56,30 @@ export const UiComponentsRoutes: Routes = [
         component: AddCategoryComponent,
       },
       {
-        path: 'category/edit/:id',
+        path: 'category/edit/:id', // Định nghĩa route nhận ID danh mục
         component: EditCategoryComponent,
+      },
+      {
+        path: 'products/product-list',
+        component: ProductListComponent
+      },
+      {
+        path: 'products/add-product',
+        component: AddProductComponent
+      },
+      {
+        path: 'products/edit-product',
+        component: EditProductComponent
+      },
+
+
+      {
+        path: 'order-management',
+        component: OrderListComponent
+      },
+      {
+        path: 'order-management/:id',
+        component: OrderDetailComponent
       },
       {
         path: 'posts',

@@ -1,88 +1,72 @@
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; // ✅ Thêm RouterModule
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MaterialModule } from 'src/app/material.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
-// Interface cho dữ liệu sách
-interface BookData {
+export interface productsData {
   id: number;
   imagePath: string;
-  title: string;
-  description: string;
-  price: number;
-  stock: number;
+  uname: string;
+  budget: number;
+  priority: string;
   category: string;
-  status: string;
+  description: string;
+  quantity: number;
 }
 
-const DU_LIEU_SACH: BookData[] = [
-  { 
-    id: 1, 
-    imagePath: 'assets/images/products/sach-1.jpg', 
-    title: 'Nhà Giả Kim', 
-    description: 'Một cuốn tiểu thuyết về việc theo đuổi ước mơ và khám phá số phận.', 
-    price: 350000, 
-    stock: 10, 
-    category: 'Tiểu thuyết', 
-    status: 'Còn hàng' 
-  },
-  { 
-    id: 2, 
-    imagePath: 'assets/images/products/sach-2.jpg', 
-    title: 'Thói Quen Nguyên Tử', 
-    description: 'Cuốn sách về cách những thói quen nhỏ có thể dẫn đến kết quả đáng kinh ngạc.', 
-    price: 450000, 
-    stock: 0, 
-    category: 'Phát triển bản thân', 
-    status: 'Hết hàng' 
-  },
-  { 
-    id: 3, 
-    imagePath: 'assets/images/products/sach-3.jpg', 
-    title: 'Làm Việc Sâu', 
-    description: 'Hướng dẫn đạt được thành công trong một thế giới đầy phiền nhiễu.', 
-    price: 400000, 
-    stock: 5, 
-    category: 'Năng suất', 
-    status: 'Còn hàng' 
-  },
-  { 
-    id: 4, 
-    imagePath: 'assets/images/products/sach-4.jpg', 
-    title: 'Nghệ Thuật Tinh Tế', 
-    description: 'Cách tiếp cận ngược lại với việc sống một cuộc sống tốt đẹp.', 
-    price: 500000, 
-    stock: 8, 
-    category: 'Phát triển bản thân', 
-    status: 'Còn hàng' 
-  }
+const PRODUCT_DATA: productsData[] = [
+  { id: 1, imagePath: 'assets/images/products/conan.jpg', uname: 'Conan', budget: 18000, priority: 'confirmed', category: 'Trinh Thám', description: 'Thám tử lừng danh Conan', quantity: 10 },
+  { id: 2, imagePath: 'assets/images/products/one.jpg', uname: 'One Piece', budget: 19000, priority: 'confirmed', category: 'Phiêu Lưu', description: 'Cuộc hành trình tìm kiếm kho báu One Piece', quantity: 15 },
+  { id: 3, imagePath: 'assets/images/products/that.jpg', uname: 'Thất Hình Đại Tội', budget: 12000, priority: 'confirmed', category: 'Khoa Học Viễn Tưởng', description: 'Cuộc chiến giữa các tội nhân huyền thoại', quantity: 8 },
+  { id: 4, imagePath: 'assets/images/products/Na.jpg', uname: 'Naruto', budget: 16000, priority: 'confirmed', category: 'Phiêu Lưu', description: 'Hành trình của Naruto trở thành Hokage', quantity: 12 },
+  { id: 5, imagePath: 'assets/images/products/7v.jpg', uname: '7 Viên Ngọc Rồng', budget: 20000, priority: 'confirmed', category: 'Phiêu Lưu', description: 'Cuộc chiến giữa các chiến binh Saiyan', quantity: 20 }
 ];
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
   imports: [
+    MatPaginatorModule,
+    FormsModule,
     MatTableModule,
     CommonModule,
-    RouterModule, // ✅ Thêm RouterModule để dùng routerLink
     MatCardModule,
+    MaterialModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+    RouterModule
   ],
   templateUrl: './product-list.component.html',
+  styleUrl: './product-list.component.scss'
 })
-export class ProductListComponent {
-  displayedColumns: string[] = ['product', 'description', 'price', 'stock', 'category', 'status', 'actions'];
-  dataSource = [...DU_LIEU_SACH];
+export class ProductListComponent implements AfterViewInit {
+  displayedColumns1: string[] = ['assigned', 'name', 'priority', 'category', 'description', 'quantity', 'budget'];
+  dataSource1 = new MatTableDataSource<productsData>(PRODUCT_DATA);
 
-  // ✅ Thêm phương thức xóa sản phẩm
-  deleteProduct(id: number) {
-    this.dataSource = this.dataSource.filter(product => product.id !== id);
-    console.log(`Deleted product with ID: ${id}`);
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource1.paginator = this.paginator;
+  }
+
+  filterValue: string = '';
+
+  filter() {
+    this.dataSource1.filter = this.filterValue.trim().toLowerCase();
+  }
+
+  ngOnInit() {
+    this.dataSource1.filterPredicate = (data: productsData, filter: string) => {
+      return data.uname.toLowerCase().includes(filter);
+    };
   }
 }

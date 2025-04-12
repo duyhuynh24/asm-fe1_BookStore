@@ -1,0 +1,17 @@
+/* Banner Section */
+.banner {
+  //background: url('assets/images/banner.jpg') center center/cover no-repeat;
+}
+
+/* Categories Section */
+.categories .rounded-circle {
+  border: 2px solid #ddd;
+}
+
+/* Featured Books Section */
+.featured-books .card {
+  transition: transform 0.3s ease;
+}
+.featured-books .card:hover {
+  transform: translateY(-10px);
+}

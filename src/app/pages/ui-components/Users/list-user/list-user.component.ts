@@ -1,19 +1,55 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // ✅ Import CommonModule
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../../../services/apis/user.service';
+import { IUser } from '../../../../interfaces/user.interface';
 
 @Component({
   selector: 'app-list-user',
-  standalone: true, // Nếu dùng Standalone Component
-  imports: [CommonModule, RouterModule], // ✅ Thêm CommonModule để hỗ trợ *ngFor
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './list-user.component.html',
-  styleUrl: './list-user.component.scss'
+  styleUrls: ['./list-user.component.scss']
 })
-export class ListUserComponent {
-  // 🛠️ Danh sách người dùng mẫu
-  users = [
-    { id: 1, name: 'Nguyễn Văn A', email: 'nguyenvana@example.com', role: 'Admin' },
-    { id: 2, name: 'Trần Thị B', email: 'tranthib@example.com', role: 'User' },
-    { id: 3, name: 'Lê Văn C', email: 'levanc@example.com', role: 'User' },
-  ];
+export class ListUserComponent implements OnInit {
+  users: IUser[] = [];
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.fetchUsers();
+  }
+
+  fetchUsers(): void {
+    this.userService.getListUser().subscribe({
+      next: (res) => {
+        this.users = res;
+      },
+      error: (err) => {
+        console.error('Lỗi khi lấy danh sách user:', err);
+      }
+    });
+  }
+
+  onDeleteUser(userId: number): void {
+    const confirmDelete = confirm('Bạn có chắc chắn muốn xóa người dùng này?');
+    if (confirmDelete) {
+      this.userService.deleteUser(userId).subscribe({
+        next: () => {
+          this.users = this.users.filter(user => user.id !== userId);
+          console.log('Đã xóa user:', userId);
+        },
+        error: (err) => {
+          console.error('Lỗi khi xóa user:', err);
+        }
+      });
+    }
+  }
+
+  onEditUser(userId: number): void {
+    this.router.navigate(['/users/edit', userId]);
+  }
 }
