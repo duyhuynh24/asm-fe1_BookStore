@@ -55,6 +55,10 @@ export const UiComponentsRoutes: Routes = [
         component: AddCategoryComponent,
       },
       {
+        path: 'category/edit/:id', // Định nghĩa route nhận ID danh mục
+        component: EditCategoryComponent,
+      },
+      {
         path: 'products/product-list',
         component: ProductListComponent
       },
@@ -67,10 +71,7 @@ export const UiComponentsRoutes: Routes = [
         component: EditProductComponent
       },
 
-  {
-        path: 'category/edit/:id', // Định nghĩa route nhận ID danh mục
-        component: EditCategoryComponent,
-      },
+
       {
         path: 'order-management',
         component: OrderListComponent
