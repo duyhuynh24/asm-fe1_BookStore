@@ -1,0 +1,46 @@
+<div class="cart container mt-4">
+  <h2 class="mb-4">Giỏ hàng của bạn</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-light">
+      <tr>
+        <th scope="col">Sản phẩm</th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Giá tiền</th>
+        <th scope="col">Tổng</th>
+        <th scope="col">Thao tác</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>
+          <div class="cart-product d-flex align-items-center">
+            <img [src]="item.imageUrl" alt="{{ item.title }}" class="img-thumbnail" width="80">
+            <div class="ms-3">
+              <h5 class="mb-0">{{ item.title }}</h5>
+              <small class="text-muted">{{ item.description }}</small>
+            </div>
+          </div>
+        </td>
+        <td>
+          <input type="number" [(ngModel)]="item.quantity" min="1" class="form-control quantity-input" style="max-width: 80px;">
+        </td>
+        <td>{{ item.price | number }} đ</td>
+        <td>{{ (item.price * item.quantity) | number }} đ</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="removeItem(item)">Xóa</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tổng tiền và nút thanh toán -->
+  <div class="row">
+    <div class="col text-end">
+      <h4>Tổng cộng: <span class="text-danger">{{ getTotal() | number }} đ</span></h4>
+      <button class="btn btn-success mt-3">Thanh toán</button>
+    </div>
+  </div>
+</div>

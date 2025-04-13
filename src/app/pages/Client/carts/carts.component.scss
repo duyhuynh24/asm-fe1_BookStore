@@ -1,0 +1,23 @@
+.cart {
+  h2 {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .cart-product {
+    img {
+      border-radius: 5px;
+    }
+    h5 {
+      font-size: 1rem;
+    }
+  }
+
+  .quantity-input {
+    text-align: center;
+  }
+
+  table {
+    font-size: 0.95rem;
+  }
+}
