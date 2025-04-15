@@ -9,6 +9,12 @@ export const API_ENDPOINT = {
     add: '/add',
     update: '/update',
     delete: '/delete',
-    detail: '/detail',
+  },
+  category: {
+    base: API_BASE_URL + '/category',
+    list: '',
+    add: '/add',
+    update: '/update',
+    delete: '/delete',
   }
 };

@@ -7,7 +7,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Dashboard',
     iconName: 'layout-grid-add',
-    route: '/dashboard',
+    route: '/admin',
   },
   {
     navCap: 'Ui Components',
@@ -58,8 +58,8 @@ export const navItems: NavItem[] = [
       { displayName: 'Thêm sản phẩm', iconName: 'point', route: '/ui-components/products/add-product' }
     ],
   },
-  
-  
+
+
   {
     displayName: 'Order-management',
     iconName: 'shopping-cart',

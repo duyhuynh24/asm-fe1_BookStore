@@ -1,27 +1,72 @@
-<form>
-    <div class="mb-3">
-      <label class="form-label">Tên người dùng</label>
-      <input type="text" class="form-control" [(ngModel)]="selectedUser.name" name="name" required />
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary-color text-white">
+      <h5 class="mb-0">Cập nhật Người Dùng</h5>
     </div>
-  
-    <div class="mb-3">
-      <label class="form-label">Email</label>
-      <input type="email" class="form-control" [(ngModel)]="selectedUser.email" name="email" required />
-    </div>
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
-    <div class="mb-3">
-      <label class="form-label">Mật khẩu</label>
-      <input type="password" class="form-control" [(ngModel)]="selectedUser.password" name="password" required />
+        <!-- Tên -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Tên người dùng</label>
+          <input type="text" class="form-control" formControlName="name">
+          <div *ngIf="f['name'].touched && f['name'].invalid" class="text-danger">
+            <small *ngIf="f['name'].errors?.['required']">Tên không được bỏ trống</small>
+            <small *ngIf="f['name'].errors?.['minlength']">Ít nhất 3 ký tự</small>
+            <small *ngIf="f['name'].errors?.['maxlength']">Không quá 50 ký tự</small>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Email</label>
+          <input type="email" class="form-control" formControlName="email">
+          <div *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+            <small *ngIf="f['email'].errors?.['required']">Email không được bỏ trống</small>
+            <small *ngIf="f['email'].errors?.['email']">Không đúng định dạng email</small>
+          </div>
+        </div>
+
+        <!-- SĐT -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Số điện thoại</label>
+          <input type="text" class="form-control" formControlName="phone">
+        </div>
+
+        <!-- Địa chỉ -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Địa chỉ</label>
+          <input type="text" class="form-control" formControlName="address">
+        </div>
+
+        <!-- Mật khẩu -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Mật khẩu</label>
+          <input type="password" class="form-control" formControlName="password">
+          <div *ngIf="f['password'].touched && f['password'].invalid" class="text-danger">
+            <small *ngIf="f['password'].errors?.['required']">Không được bỏ trống</small>
+            <small *ngIf="f['password'].errors?.['minlength']">Ít nhất 6 ký tự</small>
+          </div>
+        </div>
+
+        <!-- Vai trò -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Vai trò</label>
+          <select class="form-select" formControlName="role">
+            <option value="">Chọn vai trò</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+          <div *ngIf="f['role'].touched && f['role'].invalid" class="text-danger">
+            <small *ngIf="f['role'].errors?.['required']">Vui lòng chọn vai trò</small>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-black" [disabled]="userForm.invalid">Lưu</button>
+          <button type="button" class="btn btn-secondary ms-2" routerLink="/ui-components/users">Hủy</button>
+        </div>
+      </form>
     </div>
-  
-    <div class="mb-3">
-      <label class="form-label">Vai trò</label>
-      <select class="form-control" [(ngModel)]="selectedUser.role" name="role" required>
-        <option value="Admin">Admin</option>
-        <option value="User">User</option>
-      </select>
-    </div>
-  
-    <button type="submit" class="btn btn-primary">Lưu</button>
-  </form>
-  
+  </div>
+</div>

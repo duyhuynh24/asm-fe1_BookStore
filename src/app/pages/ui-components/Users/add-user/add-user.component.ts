@@ -63,7 +63,7 @@ export class AddUserComponent implements OnInit {
         next: () => {
           alert('🟢 Thêm người dùng thành công!');
           this.userForm.reset();
-          this.router.navigate(['/ui-components/users']); // Chuyển hướng sau khi thành công
+          this.router.navigate(['/ui-components/list-user']); // Chuyển hướng sau khi thành công
         },
         error: (err) => {
           console.error(err);

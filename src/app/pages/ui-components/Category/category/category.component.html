@@ -1,38 +1,61 @@
 <!-- Quản lý Danh Mục với Bootstrap -->
 <div class="container mt-4">
+  <!-- Debug info -->
+  <div *ngIf="categories.length > 0" class="alert alert-info">
+    Số lượng danh mục: {{ categories.length }}
+  </div>
+
+  <!-- Loading indicator -->
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
   <div class="card shadow-sm border-light">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
       <h2 class="mb-0">Quản Lý Danh Mục</h2>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered" *ngIf="!isLoading && categories.length > 0">
           <thead class="table-dark">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Tên Danh Mục</th>
-
+            <th scope="col">Mô tả</th>
             <th scope="col" class="col-2 text-center">Hành Động</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let category of categories">
+          <tr *ngFor="let category of categories; let i = index">
             <td>{{ category.id }}</td>
             <td>{{ category.name }}</td>
-
+            <td>{{ category.description }}</td>
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-warning btn-sm" [routerLink]="['/ui-components/category/edit', category.id]">
-                  Sửa
+                  <i class="fas fa-edit"></i> Sửa
                 </button>
-                <button class="btn btn-danger btn-sm ms-1" (click)="onDeleteCategory(category.id)">
-                  Xóa
+                <button class="btn btn-danger btn-sm ms-1" (click)="onDeleteCategory(category.id)"
+                        [disabled]="!category.id">
+                  <i class="fas fa-trash"></i> Xóa
                 </button>
               </div>
             </td>
           </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Empty state -->
+      <div *ngIf="!isLoading && categories.length === 0" class="text-center mt-4">
+        <p>Không có danh mục nào.</p>
       </div>
     </div>
   </div>
