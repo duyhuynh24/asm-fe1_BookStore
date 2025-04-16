@@ -5,7 +5,7 @@ import { CoreService } from 'src/app/services/core.service';
   selector: 'app-branding',
   imports: [],
   template: `
-    <a href="/" class="logodark" >
+    <a href="/admin" class="logodark" >
       <h2>BOOK-STORE</h2>
     </a>
 

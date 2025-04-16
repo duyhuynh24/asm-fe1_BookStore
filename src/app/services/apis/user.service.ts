@@ -50,7 +50,7 @@ export class UserService extends ApiService {
 
   // Sửa user theo ID
   updateUser(id: number, user: IUser): Observable<IUser> {
-    return this.put<IUser>(`${API_ENDPOINT.user.base}/${id}`, user)
+    return this.put<IUser>(`${API_ENDPOINT.user.base + API_ENDPOINT.user.update}/${id}`, user)
       .pipe(
         catchError(error => {
           console.error('Error updating user', error);
@@ -61,7 +61,7 @@ export class UserService extends ApiService {
 
   // Xóa user theo ID
   deleteUser(id: number): Observable<any> {
-    return this.delete(`${API_ENDPOINT.user.base}/${id}`)
+    return this.delete(`${API_ENDPOINT.user.base + API_ENDPOINT.user.delete}/${id}`)
       .pipe(
         catchError(error => {
           console.error('Error deleting user', error);

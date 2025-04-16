@@ -54,9 +54,14 @@ export class EditUserComponent {
       this.userService.updateUser(this.userId, this.userForm.value).subscribe({
         next: () => {
           alert('Cập nhật thành công!');
-          this.router.navigate(['/ui-components/users']);
+          this.router.navigate(['/ui-components/list-user']).catch(err => {
+            console.error('Error navigating to users page:', err);
+          });
         },
-        error: (err) => console.error(err)
+        error: (err) => {
+          console.error('Error updating user:', err);
+          alert('Có lỗi xảy ra khi cập nhật người dùng.');
+        }
       });
     }
   }

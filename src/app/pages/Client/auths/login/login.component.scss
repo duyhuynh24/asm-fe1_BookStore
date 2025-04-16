@@ -1,22 +1,84 @@
-.auth-wrapper {
+.login-box {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: #fef8f6;
 }
 
-.auth-box {
+.login-box__container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: 420px;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
 }
 
-.auth-title {
+.login-box__title {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 1.5rem;
+  color: #fb9678;
+
+  padding: 0.75rem;
+  border-radius: 6px;
   font-weight: 600;
+}
+
+.login-box__form-group {
+  margin-bottom: 1rem;
+}
+
+.login-box__label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #333;
+}
+
+.login-box__input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.3s;
+}
+
+.login-box__input:focus {
+  border-color: #fb9678;
+  outline: none;
+  box-shadow: 0 0 0 0.1rem rgba(251, 150, 120, 0.25);
+}
+
+.login-box__button {
+  background-color: #fb9678;
+  border: 1px solid #fb9678;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 6px;
+  width: 100%;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.login-box__button:hover {
+  background-color: #f6845f; /* darken #fb9678 */
+  border-color: #f6845f;
+}
+
+.login-box__footer {
+  margin-top: 1.5rem;
+  color: #555;
+  text-align: center;
+}
+
+.login-box__link {
+  margin-left: 5px;
+  color: #fb9678;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-box__link:hover {
+  text-decoration: underline;
 }

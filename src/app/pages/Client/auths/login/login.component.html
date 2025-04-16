@@ -1,33 +1,33 @@
-<div class="auth-wrapper">
-  <div class="auth-box">
-    <h3 class="auth-title text-primary">Đăng Nhập</h3>
+<div class="login-box">
+  <div class="login-box__container">
+    <h3 class="login-box__title btn-primary">Đăng Nhập</h3>
     <form>
-      <div class="mb-3">
-        <label class="form-label">Email</label>
+      <div class="login-box__form-group mb-3">
+        <label class="login-box__label form-label">Email</label>
         <input
           type="email"
-          class="form-control"
+          class="login-box__input form-control"
           [(ngModel)]="email"
           name="email"
           placeholder="Nhập email"
         />
       </div>
-      <div class="mb-3">
-        <label class="form-label">Mật khẩu</label>
+      <div class="login-box__form-group mb-3">
+        <label class="login-box__label form-label">Mật khẩu</label>
         <input
           type="password"
-          class="form-control"
+          class="login-box__input form-control"
           [(ngModel)]="password"
           name="password"
           placeholder="Nhập mật khẩu"
         />
       </div>
-      <button class="btn btn-primary w-100" type="submit">Đăng nhập</button>
+      <button class="login-box__button btn btn-primary w-100" type="submit">Đăng nhập</button>
     </form>
-    <div class="text-center mt-3">
+    <div class="login-box__footer text-center mt-3">
       <small>Chưa có tài khoản?
-        <a routerLink="../register" class="text-primary text-decoration-none">Đăng ký</a>
       </small>
+      <a routerLink="/register" class="login-box__link text-primary text-decoration-none">Đăng ký</a>
     </div>
   </div>
 </div>
