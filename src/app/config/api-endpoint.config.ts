@@ -16,5 +16,13 @@ export const API_ENDPOINT = {
     add: '/add',
     update: '/edit',
     delete: '/delete',
+
+  },
+  product: {
+    base: API_BASE_URL + '/products',  // Sử dụng API_BASE_URL cho sản phẩm
+    list: '',  // Đã có trong base URL
+    add: '/add',  // Endpoint thêm sản phẩm
+    update: '/update',  // Endpoint cập nhật sản phẩm
+    delete: '/delete',  // Endpoint xóa sản phẩm
   }
 };
